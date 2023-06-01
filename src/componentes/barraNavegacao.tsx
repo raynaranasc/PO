@@ -1,83 +1,198 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import { Component } from "react";
 
-type props = {
-    tema: string;
-    botoes: string[];
-    dropdown: string[];
-    seletorView: Function;
-  };
-
-export default class BarraNavegacao extends Component<props>{
-    constructor(props: props | Readonly<props>) {
-        super(props)
-        this.gerarListaBotoes = this.gerarListaBotoes.bind(this)
-    }
-
-
-    gerarListaBotoes() {
-        if (this.props.botoes.length <= 0) {
-            return <></>
-        } else {
-            let lista = this.props.botoes.map(valor =>
-                <li key={valor} className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => this.props.seletorView(valor, e)}>{valor}</a>
+export default class barraNavegacao extends Component {
+  render() {
+    return (
+      <div>
+        <nav className="navbar navbar-expand-lg bg-body-tertiary bg-info-subtle">
+          <span className="navbar-text mx-auto ms-5 p-3 fs-4">PetLovers</span>
+          <div className="container-fluid">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle ms-5"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    cadastrar
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <a className="dropdown-item" href="/">
+                        cliente
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/PetCadastroForm">
+                        pet
+                      </a>
+                    </li>
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/ProdutoFormCadastro">
+                        produto
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/ServicoFormCadastro">
+                        serviço
+                      </a>
+                    </li>
+                  </ul>
                 </li>
-            )
-            return lista
-        }
-    }
-    gerarListaDropdown() {
-        if (this.props.dropdown.length <= 0) {
-          return <></>;
-        } else {
-          let lista = this.props.dropdown.map((valor) => (
-            <li key={valor} className="nav-item">
-              <a
-                className="nav-link"
-                href="#"
-                onClick={(e) => this.props.seletorView(valor, e)}
-              >
-                {valor}
-              </a>
-            </li>
-             ));
-             return lista;
-           }
-         }
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle ms-5"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    editar
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <a className="dropdown-item" href="/ClienteFormEdicao">
+                        cliente
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/PetFormEdicao">
+                        pet
+                      </a>
+                    </li>
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/ProdutoFormEdicao">
+                        produto
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/ServicoFormEdicao">
+                        serviço
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle ms-5"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    listar
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <a className="dropdown-item" href="/ClienteListarTabela">
+                        cliente
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/PetListarTabela">
+                        pet
+                      </a>
+                    </li>
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/ProdutoListarTabela">
+                        produto
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/ServicoListarTabela">
+                        serviço
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle ms-5"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    ações
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <a className="dropdown-item" href="/ConsumirProduto">
+                        consumir produto
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/ConsumirServico">
+                        consumir serviço
+                      </a>
+                    </li>
+                  </ul>
+                </li>
 
-    render() {
-        let tema = this.props.tema
-        return (
-            <>
-                <nav className="navbar bg-primary" data-bs-theme="dark" style={{ marginBottom: 10 }}>
-                    <div className="container-fluid">
-                    <ul className="nav nav-underline"> 
-                        <span className="navbar-brand mb-0 h1">PetLovers</span>
-                        <div className="nav-item dropdown" style={{listStyle: "none"}}>
-                            <a
-                                className="nav-link dropdown-toggle"
-                                href="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >Cadastrar</a>
-                            <ul className="dropdown-menu">
-                                <li><a className="dropdown-item" href="#">Cliente</a></li>
-                                <li><a className="dropdown-item" href="#">Pet</a></li>
-                                <li><a className="dropdown-item" href="#">Consumo</a></li>
-                            </ul>
-                            <ul className="dropdown-menu">{this.gerarListaDropdown()}</ul>
-                         </div>
-                                {this.gerarListaBotoes()}
-                            </ul>
-                        </div>
-                
-                </nav>
-            </>
-        );
-     }
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle ms-5"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    informações
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <a className="dropdown-item" href="/ConsumirProduto">
+                        produtos
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/ConsumirServico">
+                        serviço
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/ConsumirProduto">
+                        pet
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/ConsumirServico">
+                        cliente
+                      </a>
+                    </li>
+                  </ul>
+                  
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    );
+  }
 }
-

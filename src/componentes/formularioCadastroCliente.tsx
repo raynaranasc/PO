@@ -1,5 +1,7 @@
 import { Component } from "react";
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import BarraNavegacao from "./barraNavegacao";
 type props = {
     tema: string
 }
@@ -9,6 +11,8 @@ export default class FormularioCadastroCliente extends Component<props> {
     render() {
         let tema = this.props.tema
         return (
+            <div>
+            <BarraNavegacao />
             <div className="container-fluid">
                 <form>
                     <div className="input-group mb-3">
@@ -64,7 +68,7 @@ export default class FormularioCadastroCliente extends Component<props> {
                         <button className="btn btn-primary" type="button">Cadastrar</button>
                     </div>
                 </form>
-            </div>
+            </div></div>
         )
     }
 }
